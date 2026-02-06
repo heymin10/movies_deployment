@@ -3,3 +3,5 @@ streamlit
 altair
 pandas
 numpy
+re
+unicodedata

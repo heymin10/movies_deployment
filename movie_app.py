@@ -65,7 +65,7 @@ agree = sidebar.checkbox('Mostrar todos los filmes')
 titulo_filme = sidebar.text_input('Título del filme:')
 #Boton para filtrar por título de filme
 btnFilterbyTitulo = sidebar.button('Buscar filmes por título')
-#Filtramos por filme 
+#Filtramos por filme
 if btnFilterbyTitulo:
   df = filtered_by_filme(df,titulo_filme)
 
@@ -89,7 +89,6 @@ if agree:
 
 #Formulario en sidebar para insetar nuevo filme
 sidebar.title("Nuevo filme")
-index = sidebar.text_input('Index:') 
 name = sidebar.text_input('Name:')
 company = sidebar.selectbox('Company:',df_tot['company'].unique())
 director = sidebar.selectbox('Director:',df_tot['director'].unique())
@@ -98,5 +97,5 @@ submit = sidebar.button('Crear nuevo filme')
 
 if name and company and director and genre and submit:
   doc_ref = db.collection('movies').document(name)
-  doc_ref.set({'index':index,'name':name,'company':company,'director':director,'genre':genre})
+  doc_ref.set({'name':name,'company':company,'director':director,'genre':genre})
   sidebar.write('Registro insertado correctamente')

@@ -14,8 +14,7 @@ db = firestore.Client(credentials=creds, project="movies")
 ################################### Definimos funciones auxiliares
 
 #Función para leer todos los registros desde el arranque
-@st.cache_data
-def dataset_firestore(n_rows):
+def dataset_firestore():
   movies_ref = list(db.collection(u'movies').stream())
   movies_dict = list(map(lambda x: x.to_dict(),movies_ref))
   return pd.DataFrame(movies_dict)
@@ -51,7 +50,7 @@ def filtered_by_director(df,name):
 ############################################## Cuerpo de streamlit
 
 #Guardamos la base en una variable
-df = dataset_firestore(10)
+df = dataset_firestore()
 df_tot = df
 
 
